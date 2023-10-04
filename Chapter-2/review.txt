@@ -1,0 +1,37 @@
+Know the Concepts
+
+• Describe the fetch-execute cycle.
+• What is a register? How would computation be more difficult without registers?
+• How do you represent numbers larger than 255?
+• How big are the registers on the machines we will be using?
+• How does a computer know how to interpret a given byte or set of bytes of
+memory?
+• What are the addressing modes and what are they used for?
+• What does the instruction pointer do?
+
+
+Use the Concepts
+
+• What data would you use in an employee record? How would you lay it out in
+memory?
+• If I had the pointer the the beginning of the employee record above, and wanted
+to access a particular piece of data inside of it, what addressing mode would I
+use?
+• In base pointer addressing mode, if you have a register holding the value 3122,
+and an offset of 20, what address would you be trying to access?
+• In indexed addressing mode, if the base address is 6512, the index register has a
+5, and the multiplier is 4, what address would you be trying to access?
+• In indexed addressing mode, if the base address is 123472, the index register
+has a 0, and the multiplier is 4, what address would you be trying to access?
+• In indexed addressing mode, if the base address is 9123478, the index register
+has a 20, and the multiplier is 1, what address would you be trying to access?
+
+
+Going Further
+
+• What are the minimum number of addressing modes needed for computation?
+• Why include addressing modes that aren’t strictly needed?
+• Research and then describe how pipelining (or one of the other complicating
+factors) affects the fetch-execute cycle.
+• Research and then describe the tradeoffs between fixed-length instructions and
+variable-length instructions.
