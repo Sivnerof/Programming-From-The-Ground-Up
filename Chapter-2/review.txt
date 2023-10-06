@@ -1,12 +1,39 @@
 Know the Concepts
 
 • Describe the fetch-execute cycle.
+    The fetch-execute cycle, also known as the instruction cycle or the fetch–decode–execute cycle, is a process used by a computers CPU (Central Processing Unit) to read instructions from the main memory and execute them.
+    Instructions are fetched/executed one at a time in a continuous loop until their are no instructions left (i.e. the computer is powered off).
+
 • What is a register? How would computation be more difficult without registers?
+    A register is a section of high-speed memory located within the CPU that holds data to be processed or interpreted at some point.
+    Registers can contain data, instructions, or even addresses.
+    Without the use of registers the computational process would be slower due to all data, addresses, and instructions needing to be pulled directly from RAM (Random Access Memory).
+
 • How do you represent numbers larger than 255?
+    A single bit can hold one of only two values, 0 or 1. By adding another bit we can increase the amount of values we can represent by double.
+    So two bits can represent four posible values (2^2 = 4) and with three bits we can represent 8 possible values (2^3 = 8).
+    A full byte or 8 bits would give us a range from 0-255 (2^8 = 256) possible values to choose from.
+    Therefore, if we wish to represent a number larger than 255, we will need to use more bytes.
+
 • How big are the registers on the machines we will be using?
+    The register size (word size) on the machines discussed in the book will all be 4 bytes long.
+
 • How does a computer know how to interpret a given byte or set of bytes of
 memory?
+    The computer does not know the significance of a number until that number is interpreted.
+    Numbers turn into ASCII codes once there is an attempt to display it, same goes for colors.
+    The significance of the number is determined by programs, software, or hardware.
+    A number can become an address once you choose to look up the byte it points to, and 
+    instructions are recognized as such due to a special-purpose register called the instruction pointer.
+
 • What are the addressing modes and what are they used for?
+    immediate mode
+    register addressing mode
+    direct addressing mode
+    indexed addressing mode
+    indirect addressing mode
+    base pointer addressing mode
+
 • What does the instruction pointer do?
 
 
