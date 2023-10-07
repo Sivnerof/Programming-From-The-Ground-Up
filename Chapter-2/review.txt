@@ -27,12 +27,17 @@ memory?
     instructions are recognized as such due to a special-purpose register called the instruction pointer.
 
 • What are the addressing modes and what are they used for?
-    immediate mode
-    register addressing mode
-    direct addressing mode
-    indexed addressing mode
-    indirect addressing mode
-    base pointer addressing mode
+    1. Immediate Mode
+        In immediate mode a CPU takes a value (operand) directly from the instruction, instead of loading a value from a location in memory.
+        An example would be "Add 5, 3", rather than "Add R0, R1".
+    2. Register Addressing Mode
+        In register addressing mode the instruction contains a REGISTER from which the operand is to be taken, rather than a location in memory.
+        An example would be "Add R1, R2".
+    3. Direct Addressing Mode
+        In direct addressing mode an operand is taken from an address location in MEMORY.
+    4. Indexed Addressing Mode
+    5. Indirect Addressing Mode
+    6. Base Pointer Addressing Mode
 
 • What does the instruction pointer do?
 
