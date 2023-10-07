@@ -28,14 +28,16 @@ memory?
 
 • What are the addressing modes and what are they used for?
     1. Immediate Mode
-        In immediate mode a CPU takes a value (operand) directly from the instruction, instead of loading a value from a location in memory.
+        In immediate mode, a CPU takes a value (operand) directly from the instruction, instead of loading a value from a location in memory.
         An example would be "Add 5, 3", rather than "Add R0, R1".
     2. Register Addressing Mode
-        In register addressing mode the instruction contains a REGISTER from which the operand is to be taken, rather than a location in memory.
+        In register addressing mode, the instruction contains a REGISTER from which the operand is to be taken, rather than a location in memory.
         An example would be "Add R1, R2".
     3. Direct Addressing Mode
-        In direct addressing mode an operand is taken from an address location in MEMORY.
+        In direct addressing mode, the instruction will contain a location address in MEMORY from which the operand will be taken.
+        An example would be "Add R1, 3000", where the operand will be taken from memory address location 3000 (byte 3000).
     4. Indexed Addressing Mode
+        
     5. Indirect Addressing Mode
     6. Base Pointer Addressing Mode
 
