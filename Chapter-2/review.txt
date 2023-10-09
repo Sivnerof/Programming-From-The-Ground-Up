@@ -37,11 +37,26 @@ memory?
         In direct addressing mode, the instruction will contain a location address in MEMORY from which the operand will be taken.
         An example would be "Add R1, 3000", where the operand will be taken from memory address location 3000 (byte 3000).
     4. Indexed Addressing Mode
-        
+        In indexed addressing mode the instruction contains an address in memory along with an index register,
+        the contents of the index register are then added to the address in memory resulting in the actual location in memory where the data will be accessed.
+        For example, if the address is 3009 and the contents of the index register are 4, this would leave us with the address at location 3013.
+        Indexed addressing is useful for instances where data is part of a larger collection, such as array elements.
+        With x86 processors it is also possible to add a multiplier to be used with the index.
+        For example, if you were trying to access the 4th byte FROM address 3009 using index addressing with a multiplier you would load the index register
+        with 3 (Not 4, counting starts at zero) and set the multiplier to 1, this would leave you with the contents at location 3012.
+        Another example of using indexed addressing with a multiplier, but this time to grab the second word from location 3009:
+        Each word is 4 bytes, so two words is equal to eight bytes. Our original address is 3009 and our target address is 3017 (8 bytes from 3009).
+        We set our index to 2 (location 3011), and our multiplier to 4 (word size in bytes), this results in the target address.
+        Basically we multiply the word amount and the word size (4).
     5. Indirect Addressing Mode
+        In indirect addressing mode the instruction contains a register which itself contains a pointer to the actual address in memory.
+        For example, if the instruction specified register %eax and the value of %eax was 100, then the value used will be whatever is stored at memory address location 100.
     6. Base Pointer Addressing Mode
+        Base pointer addressing mode is similar to indirect addressing mode except that an offset is also added.
 
 • What does the instruction pointer do?
+    The instruction pointer is a special purpose register that points to a location in memory to be used as the next instruction.
+
 
 
 Use the Concepts
