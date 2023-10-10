@@ -63,6 +63,9 @@ Use the Concepts
 
 • What data would you use in an employee record? How would you lay it out in
 memory?
+    An employee record can consist of a name, address, id number, etc.
+    Laying out the data in memory can be done sequentially or by using pointers.
+
 • If I had the pointer the the beginning of the employee record above, and wanted
 to access a particular piece of data inside of it, what addressing mode would I
 use?
