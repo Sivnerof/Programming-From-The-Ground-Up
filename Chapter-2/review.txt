@@ -63,12 +63,31 @@ Use the Concepts
 
 • What data would you use in an employee record? How would you lay it out in
 memory?
-    An employee record can consist of a name, address, id number, etc.
+    An employee record can consist of a name, address, id number, office number, etc.
     Laying out the data in memory can be done sequentially or by using pointers.
+    The following example will show the employee record data, listed above, using a sequential layout in memory.
+    Start of employee record: Byte 0.
+    Employee name: Byte 0 up to byte 50 (50 byte long name).
+    Employee address: Byte 50 to byte 100 (50 byte long address).
+    Employee ID: Byte 100 to byte 104 (4 byte long employee ID).
+    Employee office number: Byte 104 to byte 108 (4 byte long employee office number).
+    End of employee record: Byte 108 (Employee record data totals 108 bytes)
+    The problem with using a sequential layout in memory arises when a piece of data will be variable in length.
+    If the piece of data is smaller than the fixed length, memory will be wasted. If it is longer than the fixed length, data will be lost.
+    For instance, in the employee record, any name larger than 50 bytes will end up being truncated.
+    In order to solve this issue, pointers can be used in the layout of memory, such as in the example below.
+    Start of employee record: Byte 0.
+    Employee name pointer: Byte 0 up to byte 4 (4 byte long pointer).
+    Employee address pointer: Byte 4 to byte 8 (4 byte long pointer).
+    Employee ID: Byte 8 to byte 12 (4 byte long employee ID).
+    Employee office number: Byte 12 to byte 16 (4 byte long employee office number).
+    End of employee record: Byte 16 (Employee record data totals 16 bytes).
 
 • If I had the pointer the the beginning of the employee record above, and wanted
 to access a particular piece of data inside of it, what addressing mode would I
 use?
+
+
 • In base pointer addressing mode, if you have a register holding the value 3122,
 and an offset of 20, what address would you be trying to access?
 • In indexed addressing mode, if the base address is 6512, the index register has a
