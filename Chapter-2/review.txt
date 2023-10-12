@@ -86,17 +86,33 @@ memory?
 • If I had the pointer the the beginning of the employee record above, and wanted
 to access a particular piece of data inside of it, what addressing mode would I
 use?
-
+    If we wanted to access a specific piece of data within the employee record described above we could use the base pointer addressing mode.
+    For example, if the pointer is set to byte 0, and our target was the employee ID, we would include an offset of 8 bytes (two words).
 
 • In base pointer addressing mode, if you have a register holding the value 3122,
 and an offset of 20, what address would you be trying to access?
+    3142 (3122 + 20).
+
 • In indexed addressing mode, if the base address is 6512, the index register has a
 5, and the multiplier is 4, what address would you be trying to access?
+    6532
+    Effective Address = Base Address + Word Amount * Word Size
+    6532 = 6512 + 5 * 4
+    The attempt here was to extract 5 words (20 bytes).
+
 • In indexed addressing mode, if the base address is 123472, the index register
-has a 0, and the multiplier is 4, what address would you be trying to access?
+has a 0, and the multiplier is 4, what address would you be trying to access? 
+    123472
+    Effective Address = Base Address + Word Amount * Word Size
+    123472 = 123472 + 0 * 4
+    The attempt here was to select the zeroth item.
+
 • In indexed addressing mode, if the base address is 9123478, the index register
 has a 20, and the multiplier is 1, what address would you be trying to access?
-
+    9123498
+    Effective Address = Base Address + Word Amount * Word Size
+    9123498 = 9123478 + 1 * 20
+    The attempt here was to grab the first 20 bytes (4 words).
 
 Going Further
 
