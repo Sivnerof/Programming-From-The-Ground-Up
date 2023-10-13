@@ -101,7 +101,7 @@ and an offset of 20, what address would you be trying to access?
     The attempt here was to extract 5 words (20 bytes).
 
 • In indexed addressing mode, if the base address is 123472, the index register
-has a 0, and the multiplier is 4, what address would you be trying to access? 
+has a 0, and the multiplier is 4, what address would you be trying to access?
     123472
     Effective Address = Base Address + Word Amount * Word Size
     123472 = 123472 + 0 * 4
@@ -117,8 +117,13 @@ has a 20, and the multiplier is 1, what address would you be trying to access?
 Going Further
 
 • What are the minimum number of addressing modes needed for computation?
+    The absolute minimum number of addressing modes needed for computation is 1: immediate mode.
+    The downside to using only immediate addressing mode is that you will be limited to basic arithmetic with constants.
+
 • Why include addressing modes that aren’t strictly needed?
+
 • Research and then describe how pipelining (or one of the other complicating
 factors) affects the fetch-execute cycle.
+
 • Research and then describe the tradeoffs between fixed-length instructions and
 variable-length instructions.
