@@ -114,6 +114,8 @@ has a 20, and the multiplier is 1, what address would you be trying to access?
     9123498 = 9123478 + 1 * 20
     The attempt here was to grab the first 20 bytes (4 words).
 
+
+
 Going Further
 
 • What are the minimum number of addressing modes needed for computation?
@@ -121,7 +123,6 @@ Going Further
     The downside to using only immediate addressing mode is that you will be limited to basic arithmetic with constants.
 
 • Why include addressing modes that aren’t strictly needed?
-
     Adding addressing modes can drastically improve a computers flexibility and optimize the computational process.
     Some addressing modes even help with memory management by allowing us to lay out and work with data non-sequentially.
     This gives us the ability to make use of arrays and other data structures in a more efficient manner.
@@ -129,6 +130,20 @@ Going Further
 
 • Research and then describe how pipelining (or one of the other complicating
 factors) affects the fetch-execute cycle.
+    Pipelining refers to a design used in some CPU's where instructions are broken into pieces and executed in parallel.
+    CPU's that don't use pipelining will execute every step of an instructions fetch-decode-execute cycle before
+    it can start the same cycle with another instruction.
+    This concept is easier to understand by using an example like laundry, a CPU that doesn't pipeline would be like
+    Washing a load of laundry, drying it, folding it and THEN throwing a new load in the washer.
+    Using the same example but this time WITH pipelining, we would start by washing a load and once it's done, we put it in the dryer at the
+    same time we put the next load in the washer.
+    While the first load is in the dryer, we make use of the free washer to start the next load.
+    This way we save time by making use of every available resource, instead of waiting for one instruction to finish before starting the next.
+    In the CPU, this would be done by designating certain areas for specific purposes, such as a part responsible for fetching, another for decoding, and
+    another for executing.
 
 • Research and then describe the tradeoffs between fixed-length instructions and
 variable-length instructions.
+    Fixed-length instructions are typically simpler to decode because all instructions are the same length.
+    It's also easier to find the beginnings of the next instruction, since they're all the same size.
+    The downside to this is the wasted space in memory, since all data, no matter the size, will still use the full length allocated.
