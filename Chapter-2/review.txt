@@ -147,3 +147,5 @@ variable-length instructions.
     Fixed-length instructions are typically simpler to decode because all instructions are the same length.
     It's also easier to find the beginnings of the next instruction, since they're all the same size.
     The downside to this is the wasted space in memory, since all data, no matter the size, will still use the full length allocated.
+    Variable-length instructions won't waste extra memory on smaller instructions.
+    The upside to this is memory management, the downside however is the complexity in figuring out where instructions begin since every size is variable.
