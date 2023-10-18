@@ -15,6 +15,7 @@
 #            %eax holds the system call number
 #            %ebx holds the return status
 #
+
 .section .data
 
 .section .text
