@@ -47,7 +47,10 @@ movl $1, %eax
 # In this case we'll output a status code of 0 to indicate that the program has exited successfuly.
 movl $57, %ebx
 
-#
+# int is short for interrupt and 0x80 is hexadecimal for 128.
+# This instruction is used to interrupt the program flow and transfer control to over to the Linux kernel,
+# so that it can perform the system call.
+# 0x80 is the interrupt number.
 int $0x80
 
 # Program needs to end with a new line or the assembler will throw an error.
