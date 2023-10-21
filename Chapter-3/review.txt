@@ -2,59 +2,57 @@ Review
 
 Know the Concepts
 
-• What does if mean if a line in the program starts with the ’#’ character?
-The octothorpe, or hash symbol, is used to mark the start of a code comment.
+• What does it mean if a line in the program starts with the ’#’ character?
+    The octothorpe, or hash symbol, is used to mark the start of a code comment.
 
 • What is the difference between an assembly language file and an object code
 file?
-Assembly language files are a type of source code, it is human-readable and mnemonic with operation names like "add" or "mov" (for move), but assembly files alone can not be executed.
-In order to convert the source code into an executable file it must be translated into machine code by the assembler.
-Machine code is made up of 1's and 0's (binary), and is not easily readable by humans because it is used to speak directly to the CPU.
-Object code is a type of machine code that is created after assembling a programs source code, it usually contains metadata that will be used by the linker.
-This metadata tells the linker where programs start and how they relate to each other.
-Object code gets turned into an executable after the linking process.
-Assembly Source Code -> Assembler -> Object Code -> Linker -> Executable.
+    Assembly language files are a type of source code, it is human-readable and mnemonic with operation names like "add" or "mov" (for move), but assembly files alone can not be executed.
+    In order to convert the source code into an executable file it must be translated into machine code by the assembler.
+    Machine code is made up of 1's and 0's (binary), and is not easily readable by humans because it is used to speak directly to the CPU.
+    Object code is a type of machine code that is created after assembling a programs source code, it usually contains metadata that will be used by the linker.
+    This metadata tells the linker where programs start and how they relate to each other.
+    Object code gets turned into an executable after the linking process.
+    Assembly Source Code -> Assembler -> Object Code -> Linker -> Executable.
 
 • What does the linker do?
-The linker converts object files into a single executable.
-Typically, an object file will contain references to other object files or libraries,
-the linker resolves all these references into one executable program.
-
+    The linker converts object files into a single executable.
+    Typically, an object file will contain references to other object files or libraries,
+    the linker resolves all these references into one executable program.
 
 • How do you check the result status code of the last program you ran?
-echo $?
-
+    echo $?
 
 • What is the difference between movl $1, %eax and movl 1, %eax?
-movl $1, %eax - This intruction uses immediate addressing ($) to move the value 1 into the accumulator (%eax register).
-movl 1, %eax - This instruction is using direct addressing to move the value stored at the 1 address in memory into the accumulator.
+    movl $1, %eax - This intruction uses immediate addressing ($) to move the value 1 into the accumulator (%eax register).
+    movl 1, %eax - This instruction is using direct addressing to move the value stored at the 1 address in memory into the accumulator.
 
 • Which register holds the system call number?
-%eax is the register responsible for storing the system call number.
+    %eax is the register responsible for storing the system call number.
 
 • What are indexes used for?
-Indexes are used to keep track of where we are or where we want to be in an array.
+    Indexes are used to keep track of where we are or where we want to be in an array.
 
 • Why do indexes usually start at 0?
-Zero-based indexing makes pointer arithmetic simpler to use.
-When grabbing bytes, we multiply the index by the amount of bytes we need.
-For instance, if we wanted to grab the second byte from memory address 2700 (where our pointer is) we
-would simply do 2700 + 2 * 1 (2702).
-If we wanted the first element, we would do 2700 + 0 * 1 (2700).
-The formula used:
-    address + index * bytes = effective address
-If we started counting at 1 instead we would need to account for this change by subtracting or adding 1 everytime we wanted to point to anything.
-Zero-based indexing allows for cleaner and simpler arithmetic.
+    Zero-based indexing makes pointer arithmetic simpler to use.
+    When grabbing bytes, we multiply the index by the amount of bytes we need.
+    For instance, if we wanted to grab the second byte from memory address 2700 (where our pointer is) we
+    would simply do 2700 + 2 * 1 (2702).
+    If we wanted the first element, we would do 2700 + 0 * 1 (2700).
+    The formula used:
+        address + index * bytes = effective address
+    If we started counting at 1 instead we would need to account for this change by subtracting or adding 1 everytime we wanted to point to anything.
+    Zero-based indexing allows for cleaner and simpler arithmetic.
 
 • If I issued the command movl data_items(,%edi,4), %eax and
 data_items was address 3634 and %edi held the value 13, what address would
 you be using to move into %eax?
-We can simplify the instruction by plugging in the values above, so it'll be easier to understand. 
-movl data_items(,%edi,4), %eax --> movl 3634(,13,4), %eax.
-Now we can use the following formula to get the value that will end up in the accumulator (%eax register).
-address + index * bytes = effective address
-3634 + (13 * 4) = 3686.
-The contents of the %eax register will be the value currently stored at location 3686 in memory.
+    We can simplify the instruction by plugging in the values above, so it'll be easier to understand. 
+    movl data_items(,%edi,4), %eax --> movl 3634(,13,4), %eax.
+    Now we can use the following formula to get the value that will end up in the accumulator (%eax register).
+    address + index * bytes = effective address
+    3634 + (13 * 4) = 3686.
+    The contents of the %eax register will be the value currently stored at location 3686 in memory.
 
 • List the general-purpose registers.
     EAX - (Extended Accumulator)
@@ -75,7 +73,7 @@ The contents of the %eax register will be the value currently stored at location
     Flow control refers to the direction of a program.
     Control of a programs flow kicks in during conditionals, loops, etc.
     In a simple program where every instruction is executed in order, no matter what,
-    there is no control over it's flow.
+    there is no control over its flow.
     Pseudo-Code for program with no flow control:
         a = 1
         b = 2
@@ -93,15 +91,48 @@ The contents of the %eax register will be the value currently stored at location
             print c
 
 • What does a conditional jump do?
-
+    A conditional jump moves to another part in a program (jumps) based on
+    whether the value of the instruction right before was true or false.
+    It is used as a control flow mechanism.
+    For example, if you wanted to return to the beginning of a loop if a number is not found, or
+    exit the loop if the number is found in the current iteration of the loop.
+    Pseudo-Code for conditional jump:
+        NUMBERS = 1, 2, 3, 4, 5
+        NUMBER = 0
+        START_OF_LOOP
+        if NUMBERS[NUMBER] = 4
+            exit
+        else
+            NUMBER = NUMBER + 1
+            Jump to START_OF_LOOP
+    In assembly, common operation codes for conditional jumps include:
+        JE: Jump if Equal
+        JL : Jump if Less
+        JGE : Jump if Greater or Equal
+        JLE : Jump if Less or Equal
 
 • What things do you have to plan for when writing a program?
-
+    The purpose of the program.
+    A general idea of how we may solve whatever problem the program is designed to solve.
+    How much memory will be needed.
 
 • Go through every instruction and list what addressing mode is being used for
 each operand.
-
-
+        movl $0, %edi --> IMMEDIATE ADDRESSING MODE, REGISTER MODE
+        movl data_items(,%edi,4), %eax --> INDEX ADDRESSING MODE, REGISTER MODE
+        movl %eax, %ebx --> REGISTER MODE, REGISTER MODE
+    start_loop:
+        cmpl $0, %eax --> IMMEDIATE ADDRESSING MODE, REGISTER MODE
+        je loop_exit --> RELATIVE ADDRESSING
+        incl %edi --> REGISTER MODE
+        movl data_items(,%edi,4), %eax --> INDEX ADDRESSING MODE, REGISTER MODE
+        cmpl %ebx, %eax --> REGISTER MODE, REGISTER MODE
+        jle start_loop --> RELATIVE ADDRESSING
+        movl %eax, %ebx --> REGISTER MODE, REGISTER MODE
+        jmp start_loop --> RELATIVE ADDRESSING
+    loop_exit:
+        movl $1, %eax --> IMMEDIATE ADDRESSING MODE, REGISTER MODE
+        int $0x80
 
 Use the Concepts
 
