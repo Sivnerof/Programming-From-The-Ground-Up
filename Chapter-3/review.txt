@@ -1,0 +1,143 @@
+Review
+
+Know the Concepts
+
+• What does if mean if a line in the program starts with the ’#’ character?
+The octothorpe, or hash symbol, is used to mark the start of a code comment.
+
+• What is the difference between an assembly language file and an object code
+file?
+Assembly language files are a type of source code, it is human-readable and mnemonic with operation names like "add" or "mov" (for move), but assembly files alone can not be executed.
+In order to convert the source code into an executable file it must be translated into machine code by the assembler.
+Machine code is made up of 1's and 0's (binary), and is not easily readable by humans because it is used to speak directly to the CPU.
+Object code is a type of machine code that is created after assembling a programs source code, it usually contains metadata that will be used by the linker.
+This metadata tells the linker where programs start and how they relate to each other.
+Object code gets turned into an executable after the linking process.
+Assembly Source Code -> Assembler -> Object Code -> Linker -> Executable.
+
+• What does the linker do?
+The linker converts object files into a single executable.
+Typically, an object file will contain references to other object files or libraries,
+the linker resolves all these references into one executable program.
+
+
+• How do you check the result status code of the last program you ran?
+echo $?
+
+
+• What is the difference between movl $1, %eax and movl 1, %eax?
+movl $1, %eax - This intruction uses immediate addressing ($) to move the value 1 into the accumulator (%eax register).
+movl 1, %eax - This instruction is using direct addressing to move the value stored at the 1 address in memory into the accumulator.
+
+• Which register holds the system call number?
+%eax is the register responsible for storing the system call number.
+
+• What are indexes used for?
+Indexes are used to keep track of where we are or where we want to be in an array.
+
+• Why do indexes usually start at 0?
+Zero-based indexing makes pointer arithmetic simpler to use.
+When grabbing bytes, we multiply the index by the amount of bytes we need.
+For instance, if we wanted to grab the second byte from memory address 2700 (where our pointer is) we
+would simply do 2700 + 2 * 1 (2702).
+If we wanted the first element, we would do 2700 + 0 * 1 (2700).
+The formula used:
+    address + index * bytes = effective address
+If we started counting at 1 instead we would need to account for this change by subtracting or adding 1 everytime we wanted to point to anything.
+Zero-based indexing allows for cleaner and simpler arithmetic.
+
+• If I issued the command movl data_items(,%edi,4), %eax and
+data_items was address 3634 and %edi held the value 13, what address would
+you be using to move into %eax?
+We can simplify the instruction by plugging in the values above, so it'll be easier to understand. 
+movl data_items(,%edi,4), %eax --> movl 3634(,13,4), %eax.
+Now we can use the following formula to get the value that will end up in the accumulator (%eax register).
+address + index * bytes = effective address
+3634 + (13 * 4) = 3686.
+The contents of the %eax register will be the value currently stored at location 3686 in memory.
+
+• List the general-purpose registers.
+    EAX - (Extended Accumulator)
+    EBX - (Extended Base)
+    ECX - (Extended Counter)
+    EDX - (Extended Data)
+    ESI - (Source Index)
+    EDI - (Destination Index)
+    EBP - (Extended Base Pointer)
+    ESP - (Extended Stack Pointer)
+
+• What is the difference between movl and movb?
+    movl - (Move Long) moves 32 bits (4 bytes).
+    movb - (Move Byte) moves 8 bits (1 byte).
+    The difference between movl and movb is how much data they move.
+
+• What is flow control?
+    Flow control refers to the direction of a program.
+    Control of a programs flow kicks in during conditionals, loops, etc.
+    In a simple program where every instruction is executed in order, no matter what,
+    there is no control over it's flow.
+    Pseudo-Code for program with no flow control:
+        a = 1
+        b = 2
+        c = 3
+        print a
+        print b
+        print c
+    Pseudo-Code for program with flow control:
+        a = 1
+        b = 2
+        c = 3
+        if a equals b
+            print a
+        else
+            print c
+
+• What does a conditional jump do?
+
+
+• What things do you have to plan for when writing a program?
+
+
+• Go through every instruction and list what addressing mode is being used for
+each operand.
+
+
+
+Use the Concepts
+
+• Modify the first program to return the value 3.
+
+
+• Modify the maximum program to find the minimum instead.
+
+
+• Modify the maximum program to use the number 255 to end the list rather than
+the number 0
+
+
+• Modify the maximum program to use an ending address rather than the number
+0 to know when to stop.
+
+
+• Modify the maximum program to use a length count rather than the number 0 to
+know when to stop.
+
+
+• What would the instruction movl _start, %eax do? Be specific, based on
+your knowledge of both addressing modes and the meaning of _start. How
+would this differ from the instruction movl $_start, %eax?
+
+
+
+Going Further
+
+• Modify the first program to leave off the int instruction line. Assemble, link,
+and execute the new program. What error message do you get. Why do you
+think this might be?
+
+
+• So far, we have discussed three approaches to finding the end of the list - using
+a special number, using the ending address, and using the length count. Which
+approach do you think is best? Why? Which approach would you use if you
+knew that the list was sorted? Why?
+
