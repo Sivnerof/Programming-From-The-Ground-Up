@@ -137,7 +137,7 @@ each operand.
 Use the Concepts
 
 • Modify the first program to return the value 3.
-
+    Refer to exit-3.s for solution.
 
 • Modify the maximum program to find the minimum instead.
 
