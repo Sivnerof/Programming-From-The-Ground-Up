@@ -140,11 +140,11 @@ Use the Concepts
     Refer to exit-3.s for solution.
 
 • Modify the maximum program to find the minimum instead.
-
+    Refer to minimum.s for solution.
 
 • Modify the maximum program to use the number 255 to end the list rather than
-the number 0
-
+the number 0.
+    Refer to maximum-3.s for solution.
 
 • Modify the maximum program to use an ending address rather than the number
 0 to know when to stop.
