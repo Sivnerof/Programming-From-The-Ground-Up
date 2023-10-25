@@ -152,12 +152,15 @@ the number 0.
 
 • Modify the maximum program to use a length count rather than the number 0 to
 know when to stop.
-    Refer to maximum-4.s for solution.
+    Refer to maximum-5.s for solution.
 
 • What would the instruction movl _start, %eax do? Be specific, based on
 your knowledge of both addressing modes and the meaning of _start. How
 would this differ from the instruction movl $_start, %eax?
-
+    movl _start, %eax: This instruction moves the value of the _start label into the %eax register.
+    The _start label usually points to the memory address of a programs starting point.
+    movl $_start, %eax: This instruction moves the IMMEDIATE value of the _start label into the %eax register.
+    The immediate value of the _start label will be the memory address of a programs starting point.
 
 
 Going Further
