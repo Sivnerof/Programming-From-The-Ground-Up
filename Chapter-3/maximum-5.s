@@ -1,4 +1,4 @@
-# This program is designed to find the maximum number (255).
+# This program is designed to find the maximum number (222).
 
 .section .data
 
