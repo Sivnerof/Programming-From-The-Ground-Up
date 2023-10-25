@@ -1,10 +1,9 @@
-# The Purpose of this program is to find the largest integer (222)
-# The memory address of the integer 255 is used to check when the array has ended.
+# This program is designed to find the maximum number (255).
 
 .section .data
 
 data_items:
-    .long 3,67,34,222,45,75,54,34,44,33,22,11,66,255
+    .long 3,67,34,222,45,75,54,34,44,33,22,11,66,0
 
 .section .text
 
@@ -13,11 +12,9 @@ _start:
     movl $0, %edi
     movl data_items(,%edi,4), %eax
     movl %eax, %ebx
-    leal 48(%eax), %ecx
 
 start_loop:
-    leal data_items(,%edi,4), %edx
-    cmpl %edx, %ecx
+    cmpl $13, %edi
     je loop_exit
     incl %edi
     movl data_items(,%edi,4), %eax

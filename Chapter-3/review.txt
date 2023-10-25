@@ -148,11 +148,11 @@ the number 0.
 
 • Modify the maximum program to use an ending address rather than the number
 0 to know when to stop.
-
+    Skipped this one.
 
 • Modify the maximum program to use a length count rather than the number 0 to
 know when to stop.
-
+    Refer to maximum-4.s for solution.
 
 • What would the instruction movl _start, %eax do? Be specific, based on
 your knowledge of both addressing modes and the meaning of _start. How
