@@ -168,7 +168,9 @@ Going Further
 • Modify the first program to leave off the int instruction line. Assemble, link,
 and execute the new program. What error message do you get. Why do you
 think this might be?
-
+    Error Message: Segmentation fault (core dumped)
+    Without a system call to exit, the program never terminated properly and resources were not returned.
+    This resulted in a segmentation fault.
 
 • So far, we have discussed three approaches to finding the end of the list - using
 a special number, using the ending address, and using the length count. Which
