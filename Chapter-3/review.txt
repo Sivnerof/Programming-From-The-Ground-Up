@@ -148,7 +148,7 @@ the number 0.
 
 • Modify the maximum program to use an ending address rather than the number
 0 to know when to stop.
-    Skipped this one.
+    Refer to maximum-4.s for solution.
 
 • Modify the maximum program to use a length count rather than the number 0 to
 know when to stop.
@@ -176,4 +176,19 @@ think this might be?
 a special number, using the ending address, and using the length count. Which
 approach do you think is best? Why? Which approach would you use if you
 knew that the list was sorted? Why?
-
+    There are pros and cons to the three approaches mentioned above.
+    Using a special number to designate the end of an array is a quick and dirty method.
+    It works and it's simple, but problems with this method arise when the same character is needed as part of the actual data.
+    In this scenario, the program will interpret the data number as the end of the array.
+    For example, if the special number is 0 but the list of data items is [4, 8, 3, 233, 13, 172, 0, 52, 37, 2, 0],
+    the program will stop evaluating the numbers 52, 37, and 2.
+    Using a memory address, as a stopping point, will ensure that we always stop at a precise location rather than stopping at any
+    location that contains the value we are looking for.
+    The downside to this method is that we need to calculate the address at the end of an array,
+    with simple arrays this may be trivial, but as programs become more complex this process becomes tedious.
+    Using the length count approach is simple, it's also elegant.
+    Once you've calculated the length of an array, all you need is a counter that you can check against the length.
+    This method also comes in handy when trying to implement a binary search algorithm.
+    With a sorted list we can check which half of an array contains the target element and slice off the other half.
+    This process repeats until the target element is found.
+    Therefore, the best method for searching sorted arrays is the length count approach.
