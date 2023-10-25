@@ -12,7 +12,9 @@ This repository serves as a storage for notes/programs I write while reading the
 
 ## Contents
 
-* [Chapter 2 Notes/Programs](./Chapter-2/ "My answers to the review questions at the end of chapter 1")
+* [Chapter 2 Notes/Programs](./Chapter-2/ "My answers to the review questions at the end of chapter 2")
+
+* [Chapter 3 Notes/Programs](./Chapter-3/ "My answers to the review questions at the end of chapter 3")
 
 
 
