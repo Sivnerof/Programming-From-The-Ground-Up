@@ -1,0 +1,56 @@
+Review
+
+Know the Concepts
+
+• What are primitives?
+
+• What are calling conventions?
+
+• What is the stack?
+
+• How do pushl and popl affect the stack? What special-purpose register do
+they affect?
+
+• What are local variables and what are they used for?
+
+• Why are local variables so necessary in recursive functions?
+
+• What are %ebp and %esp used for?
+
+• What is a stack frame?
+
+
+
+Use the Concepts
+
+• Write a function called square which receives one argument and returns the
+square of that argument.
+
+• Write a program to test your square function.
+
+• Convert the maximum program given in the Section called Finding a Maximum
+Value in Chapter 3 so that it is a function which takes a pointer to several values
+and returns their maximum. Write a program that calls maximum with 3
+different lists, and returns the result of the last one as the program’s exit status
+code.
+
+• Explain the problems that would arise without a standard calling convention.
+
+
+
+Going Further
+• Do you think it’s better for a system to have a large set of primitives or a small
+one, assuming that the larger set can be written in terms of the smaller one?
+• The factorial function can be written non-recursively. Do so.
+• Find an application on the computer you use regularly. Try to locate a specific
+feature, and practice breaking that feature out into functions. Define the
+function interfaces between that feature and the rest of the program.
+• Come up with your own calling convention. Rewrite the programs in this
+chapter using it. An example of a different calling convention would be to pass
+paramters in registers rather than the stack, to pass them in a different order, to
+return values in other registers or memory locations. Whatever you pick, be
+consistent and apply it throughout the whole program.
+• Can you build a calling convention without using the stack? What limitations
+might it have?
+• What test cases should we use in our example program to check to see if it is
+working properly?
