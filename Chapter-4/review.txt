@@ -39,18 +39,24 @@ code.
 
 
 Going Further
+
 • Do you think it’s better for a system to have a large set of primitives or a small
 one, assuming that the larger set can be written in terms of the smaller one?
+
 • The factorial function can be written non-recursively. Do so.
+
 • Find an application on the computer you use regularly. Try to locate a specific
 feature, and practice breaking that feature out into functions. Define the
 function interfaces between that feature and the rest of the program.
+
 • Come up with your own calling convention. Rewrite the programs in this
 chapter using it. An example of a different calling convention would be to pass
 paramters in registers rather than the stack, to pass them in a different order, to
 return values in other registers or memory locations. Whatever you pick, be
 consistent and apply it throughout the whole program.
+
 • Can you build a calling convention without using the stack? What limitations
 might it have?
+
 • What test cases should we use in our example program to check to see if it is
 working properly?
