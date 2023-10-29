@@ -3,6 +3,9 @@ Review
 Know the Concepts
 
 • What are primitives?
+    Primitives are the lowest level of building blocks provided by a language.
+    They provide instructions to the CPU on how to perform certain actions such as mov, add, etc.
+    Some examples of primitives in assembly are mov, add, jle, cmp, etc.
 
 • What are calling conventions?
 
