@@ -8,11 +8,27 @@ Know the Concepts
     Some examples of primitives in assembly are mov, add, jle, cmp, etc.
 
 • What are calling conventions?
+    Calling conventions are standards used by programming languages that describe how a program
+    will transfer parameter values, how functions will return data, how variables will be passed in the program, etc.
+    These conventions vary from language to language.
 
 • What is the stack?
+    The stack refers to a section in memory that is reserved for function calls and local variables.
+    As data is pushed onto the top of the stack, the %esp (extended stack pointer) register will hold a pointer
+    to the new location, i.e. the top.
+    Even though a piece of data is reffered to as "the top of the stack", it actually is located LOWER in memory.
+    The more items added to the stack, the closer the "top" gets to the bottom of the allocated memory addresses.
 
 • How do pushl and popl affect the stack? What special-purpose register do
 they affect?
+    pushl (push long) will move data onto the top of the stack.
+    popl (pop long) will remove data from the top of the stack.
+    The data that is moved onto or removed from the stack depends on the
+    pointer stored in the %esp special-purpose register.
+    As data is pushed onto the top of the stack, the %esp pointer is decremented by four bytes,
+    pointing to the new top.
+    The opposite is true as data is removed from the top of the stack.
+    In the case of popl, the %esp pointer will increment by four bytes.
 
 • What are local variables and what are they used for?
 
