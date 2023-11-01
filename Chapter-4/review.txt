@@ -31,13 +31,23 @@ they affect?
     In the case of popl, the %esp pointer will increment by four bytes.
 
 • What are local variables and what are they used for?
+    Local variables are processed within a functions lifespan.
+    They do not exist outside of the function they were defined in,
+    meaning that another function or another part of the program can not use the variable.
+    Localizing variables is important for code organization,
+    it allows for data to be encapsulated entirely within the functions that need them and nowhere else.
+    Other than code organization, local variables also improve memory management by freeing up memory once a function expires. 
 
 • Why are local variables so necessary in recursive functions?
 
+
 • What are %ebp and %esp used for?
+    The %ebp (extended base pointer) register is a special purpose register that
+    The %esp (extended stack pointer) register is a special purpose register that
 
 • What is a stack frame?
-
+    A stack frame is a reserved section of memory that contains a functions parameters,
+    local variables, return address, etc.
 
 
 Use the Concepts
