@@ -39,6 +39,10 @@ they affect?
     Other than code organization, local variables also improve memory management by freeing up memory once a function expires. 
 
 • Why are local variables so necessary in recursive functions?
+    Everytime a function is called, most of the registers will be wiped.
+    In order to preserve data between functions we need to move the values of any
+    necessary register onto the stack.
+    The %eax is one of the only registers to survive, this is why it used for return values.
 
 
 • What are %ebp and %esp used for?
