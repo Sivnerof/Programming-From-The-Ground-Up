@@ -42,12 +42,17 @@ they affect?
 
 
 • What are %ebp and %esp used for?
-    The %ebp (extended base pointer) register is a special purpose register that
-    The %esp (extended stack pointer) register is a special purpose register that
+    The %ebp (extended base pointer) register is a special purpose register that is used to establish a
+    base for referencing local variables, parameters, and other items within a stack frame.
+    The base pointer is typically used as a stable reference point.
+    The %esp (extended stack pointer) register is a special purpose register that is used to keep track of the top of a stack.
+    When using PUSHL to push items onto the stack the %esp register is decremented to point to the new top,
+    in this way %esp helps with stack management.
 
 • What is a stack frame?
     A stack frame is a reserved section of memory that contains a functions parameters,
     local variables, return address, etc.
+
 
 
 Use the Concepts
