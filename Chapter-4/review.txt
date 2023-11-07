@@ -63,8 +63,10 @@ Use the Concepts
 
 • Write a function called square which receives one argument and returns the
 square of that argument.
+    Refer to square.s program for solution.
 
 • Write a program to test your square function.
+    Refer to square.s program for solution.
 
 • Convert the maximum program given in the Section called Finding a Maximum
 Value in Chapter 3 so that it is a function which takes a pointer to several values
