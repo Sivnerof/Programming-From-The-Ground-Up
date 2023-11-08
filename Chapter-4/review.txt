@@ -73,9 +73,10 @@ Value in Chapter 3 so that it is a function which takes a pointer to several val
 and returns their maximum. Write a program that calls maximum with 3
 different lists, and returns the result of the last one as the program’s exit status
 code.
+    Refer to maximum.s for solution.
 
 • Explain the problems that would arise without a standard calling convention.
-
+    
 
 
 Going Further
