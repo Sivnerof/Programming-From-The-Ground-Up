@@ -16,7 +16,7 @@ This repository serves as a storage for notes/programs I write while reading the
 
 * [Chapter 3 Notes/Programs](./Chapter-3/ "My answers to the review questions at the end of chapter 3")
 
-
+* [Chapter 4 Notes/Programs](./Chapter-4/ "My answers to the review questions at the end of chapter 4")
 
 ---
 
