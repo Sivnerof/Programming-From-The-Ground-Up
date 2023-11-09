@@ -76,28 +76,63 @@ code.
     Refer to maximum.s for solution.
 
 • Explain the problems that would arise without a standard calling convention.
-    
+    Calling conventions describe the way that functions and code should interact with each other.
+    They're an agreement between caller and callee, where the callee is a function and the
+    caller is the code that calls the function.
+    The callee may use the arguments passed to it by the caller, operate on them and return a value but
+    it should follow a certain standard when doing so.
+    The same goes for the callee, it must be responsible for the way it sends and receives the arguments/return values.
+    If there was no agreed upon convention between the two, data would not be useful since there is no guarantee that
+    the caller and callee are making proper use of the values they are manipulating.
+    For example, a function that takes two arguments, a and b, and subtracts b from a would return the number 2 if
+    a was 5 and b was 3.
+    But if the callee follows no standard calling convention he might receive the number -2 if he passed in the values in a reverse order.
+    Without calling conventions, results would be disordered.
+
 
 
 Going Further
 
 • Do you think it’s better for a system to have a large set of primitives or a small
 one, assuming that the larger set can be written in terms of the smaller one?
+    If the larger set of primitives can be made up of the smaller primitives, that already exist in the system,
+    it would be redundant.
+    Larger sets of primitives may improve the overall user experience but it comes with drawbacks,
+    such as software bloat.
 
 • The factorial function can be written non-recursively. Do so.
+    Refer to factorial-non-recursive.s for solution.
 
 • Find an application on the computer you use regularly. Try to locate a specific
 feature, and practice breaking that feature out into functions. Define the
 function interfaces between that feature and the rest of the program.
+    In a regular text editor such as Notepad you have the ability to delete a character from the text in the editor.
+    This feature might have a function called Delete_Character, maybe it takes a cursor position to determine the character before that
+    needs to be deleted. Maybe there's a call to update the UI through another function.
+    There might be a function that takes keypress and determines what course of action to take based on what key is passed as input.
+    If the backspace key is pressed the Delete_Character function will be called.
+    The Delete_Character function might take a portion of text and a position as input and return the updated text.
 
 • Come up with your own calling convention. Rewrite the programs in this
 chapter using it. An example of a different calling convention would be to pass
 paramters in registers rather than the stack, to pass them in a different order, to
 return values in other registers or memory locations. Whatever you pick, be
 consistent and apply it throughout the whole program.
+    Skipped.
 
 • Can you build a calling convention without using the stack? What limitations
 might it have?
+    A calling convention CAN be created that does not use the stack however,
+    as programs become increasingly complex they will reach a point where registers alone are not sufficient.
+    Any convention that ignores the stack, or memory in general, will need to be simple enough to store all values
+    in registers.
 
 • What test cases should we use in our example program to check to see if it is
 working properly?
+    1. Boundary Test Cases
+    2. Normal Test Cases
+    3. Invalid Input Test Cases
+    4. Edge Cases
+    5. Stress Test Cases
+    6. Corner Cases
+    7. Error Handling Test Cases
