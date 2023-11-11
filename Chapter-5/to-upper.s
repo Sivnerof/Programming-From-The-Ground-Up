@@ -5,7 +5,7 @@
 # PROCESSING:
 #                       1) Open the input file
 #                       2) Open the output file
-#                       4) While we’re not at the end of the input file
+#                       4) While we're not at the end of the input file
 #                       a) read part of file into our memory buffer
 #                       b) go through each byte of memory
 #                       if the byte is a lower-case letter,
@@ -41,7 +41,7 @@
 .equ LINUX_SYSCALL, 0x80
 
 .equ END_OF_FILE, 0                     # This is the return value
-                                        # of read which means we’ve
+                                        # of read which means we've
                                         # hit the end of the file
 
 .equ NUMBER_ARGUMENTS, 2
@@ -61,10 +61,10 @@
 .equ ST_SIZE_RESERVE, 8
 .equ ST_FD_IN, -4
 .equ ST_FD_OUT, -8
-.equ ST_ARGC, 0 #Number of arguments
-.equ ST_ARGV_0, 4 #Name of program
-.equ ST_ARGV_1, 8 #Input file name
-.equ ST_ARGV_2, 12 #Output file name
+.equ ST_ARGC, 0 # Number of arguments
+.equ ST_ARGV_0, 4 # Name of program
+.equ ST_ARGV_1, 8 # Input file name
+.equ ST_ARGV_2, 12 # Output file name
 
 .globl _start
 _start:
@@ -85,7 +85,7 @@ open_fd_in:
     movl ST_ARGV_1(%ebp), %ebx
     # read-only flag
     movl $O_RDONLY, %ecx
-    # this doesn’t really matter for reading
+    # this doesn't really matter for reading
     movl $0666, %edx
     # call Linux
     int $LINUX_SYSCALL
@@ -102,7 +102,7 @@ open_fd_out:
     movl ST_ARGV_2(%ebp), %ebx
     # flags for writing to the file
     movl $O_CREAT_WRONLY_TRUNC, %ecx
-    # mode for new file (if it’s created)
+    # mode for new file (if it's created)
     movl $0666, %edx
     # call Linux
     int $LINUX_SYSCALL
@@ -125,7 +125,7 @@ read_loop_begin:
     # Size of buffer read is returned in %eax
     int $LINUX_SYSCALL
 
-    ###EXIT IF WE’VE REACHED THE END###
+    ###EXIT IF WE'VE REACHED THE END###
     # check for end of file marker
     cmpl $END_OF_FILE, %eax
     # if found or on error, go to the end
@@ -154,9 +154,9 @@ continue_read_loop:
 
 end_loop:
     ###CLOSE THE FILES###
-    # NOTE - we don’t need to do error checking
+    # NOTE - we don't need to do error checking
     # on these, because error conditions
-    # don’t signify anything special here
+    # don't signify anything special here
     movl $SYS_CLOSE, %eax
     movl ST_FD_OUT(%ebp), %ebx
     int $LINUX_SYSCALL
@@ -190,15 +190,15 @@ end_loop:
 
 ###CONSTANTS##
 # The lower boundary of our search
-.equ LOWERCASE_A, ’a’
+.equ LOWERCASE_A, 'a'
 # The upper boundary of our search
-.equ LOWERCASE_Z, ’z’
+.equ LOWERCASE_Z, 'z'
 # Conversion between upper and lower case
-.equ UPPER_CONVERSION, ’A’ - ’a’
+.equ UPPER_CONVERSION, 'A' - 'a'
 
 ###STACK STUFF###
-.equ ST_BUFFER_LEN, 8 #Length of buffer
-.equ ST_BUFFER, 12 #actual buffer
+.equ ST_BUFFER_LEN, 8 # Length of buffer
+.equ ST_BUFFER, 12 # actual buffer
 convert_to_upper:
 pushl %ebp
 movl %esp, %ebp
@@ -217,7 +217,7 @@ convert_loop:
     movb (%eax,%edi,1), %cl
 
     # go to the next byte unless it is between
-    # ’a’ and ’z’
+    # 'a' and 'z'
     cmpb $LOWERCASE_A, %cl
     jl next_byte
     cmpb $LOWERCASE_Z, %cl
@@ -231,7 +231,7 @@ convert_loop:
 next_byte:
     incl %edi                                       # next byte
     cmpl %edi, %ebx                                 # continue unless
-                                                    # we’ve reached the
+                                                    # we've reached the
                                                     # end
     jne convert_loop
 
