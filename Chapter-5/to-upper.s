@@ -61,10 +61,10 @@
 .equ ST_SIZE_RESERVE, 8
 .equ ST_FD_IN, -4
 .equ ST_FD_OUT, -8
-.equ ST_ARGC, 0 # Number of arguments
-.equ ST_ARGV_0, 4 # Name of program
-.equ ST_ARGV_1, 8 # Input file name
-.equ ST_ARGV_2, 12 # Output file name
+.equ ST_ARGC, 0                         # Number of arguments
+.equ ST_ARGV_0, 4                       # Name of program
+.equ ST_ARGV_1, 8                       # Input file name
+.equ ST_ARGV_2, 12                      # Output file name
 
 .globl _start
 _start:
