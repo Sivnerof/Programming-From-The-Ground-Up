@@ -194,18 +194,32 @@ end_loop:
 # The upper boundary of our search
 .equ LOWERCASE_Z, 'z'
 # Conversion between upper and lower case
+# A = 65, a = 97
+# A - a (65 - 97) = -32
+# UPPER_CONVERSION = -32
+# UPPER_CONVERSION will be used to add against any lowercase letter to
+# get its uppercase equivalent.
 .equ UPPER_CONVERSION, 'A' - 'a'
 
 ###STACK STUFF###
+# Buffer Length is second push to stack by caller
 .equ ST_BUFFER_LEN, 8                               # Length of buffer
+# Buffer address is first thing pushed onto stack by caller
 .equ ST_BUFFER, 12                                  # actual buffer
 convert_to_upper:
+# Standard setup
 pushl %ebp
 movl %esp, %ebp
 
 ###SET UP VARIABLES###
+# Move the buffer start address into %eax, 12(%ebp), %eax
 movl ST_BUFFER(%ebp), %eax
+# Move the buffer length (500) into the %ebx register, 8(%ebp), %eax
+# %ebx will be used later to determine if %edi has reached the last byte,
+# at which point the loop will end.
 movl ST_BUFFER_LEN(%ebp), %ebx
+
+# Set the index (%edi) to 0
 movl $0, %edi
 # if a buffer with zero length was given
 # to us, just leave
@@ -214,6 +228,12 @@ je end_convert_loop
 
 convert_loop:
     # get the current byte
+    # movb (move byte) is used with indirect addressing here to get the address of
+    # the buffer address start + the index (%edi) * 1
+    # and load the value at that location.
+    # This is done to traverse byte by byte,
+    # moving the current byte (character) into the %cl register.
+    # %cl (count lower) is the lower byte of the %ecx register.
     movb (%eax,%edi,1), %cl
 
     # go to the next byte unless it is between
@@ -223,12 +243,14 @@ convert_loop:
     cmpb $LOWERCASE_Z, %cl
     jg next_byte
 
-    # otherwise convert the byte to uppercase
+    # otherwise convert the byte to uppercase by
+    # adding -32 to the %cl resgister.
     addb $UPPER_CONVERSION, %cl
     # and store it back
     movb %cl, (%eax,%edi,1)
 
 next_byte:
+    # Increment index by 1
     incl %edi                                       # next byte
     cmpl %edi, %ebx                                 # continue unless
                                                     # we've reached the
