@@ -133,11 +133,11 @@ read_loop_begin:
 
 continue_read_loop:
     ###CONVERT THE BLOCK TO UPPER CASE###
-    pushl $BUFFER_DATA #location of buffer
-    pushl %eax #size of the buffer
+    pushl $BUFFER_DATA                                  # location of buffer
+    pushl %eax                                          # size of the buffer
     call convert_to_upper
-    popl %eax #get the size back
-    addl $4, %esp #restore %esp
+    popl %eax                                           # get the size back
+    addl $4, %esp                                       # restore %esp
 
     ###WRITE THE BLOCK OUT TO THE OUTPUT FILE###
     # size of the buffer
