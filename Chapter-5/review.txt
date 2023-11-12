@@ -45,10 +45,22 @@ Know the Concepts
     the block is overwritten with new data.
 
 • What is the difference between the .data section and the .bss section?
-
+    The .data section can be used to reserve storage space and initialize those spaces with values.
+    The .bss section can be used to reserve storage space BUT you cannot initialize those spaces with values.
+    An example of .data in the C language would be declaring a variable and initializing its value to 5 (int x = 5;).
+    An example of .bss in the C language would be declaring a variable but not initializing its value (int x;).
 
 • What are the system calls related to reading and writing files?
-
+    Read:
+        %eax - 3 (System Call Number)
+        %ebx - File Descriptor
+        %ecx - Buffer
+        %edx - Size Of Buffer
+    Write:
+        %eax - 4 (System Call Number)
+        %ebx - File Descriptor
+        %ecx - Buffer
+        %edx - Size Of Buffer
 
 
 Use the Concepts
