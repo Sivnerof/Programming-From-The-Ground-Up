@@ -72,9 +72,25 @@ _start:
     # save the stack pointer
     movl %esp, %ebp
 
+    # At this point in the program, the stack should look like this...
+    #
+    # LOW MEMORY:     Number Of Arguments   <--- %ebp, %esp
+    #                 Program Name
+    #                 Command Line Arguments, Input File Name
+    # HIGH MEMORY:    Command Line Arguments, Output File Name
+
     # Allocate space for our file descriptors
     # on the stack
     subl $ST_SIZE_RESERVE, %esp
+
+    # At this point in the program, the stack should look like this...
+    #
+    # LOW MEMORY:     File Descriptor Output    <-- %esp
+    #                 File Descriptor Input
+    #                 Number Of Arguments       <--- %ebp
+    #                 Program Name
+    #                 Command Line Arguments, Input File Name
+    # HIGH MEMORY:    Command Line Arguments, Output File Name
 
 open_files:
 open_fd_in:
