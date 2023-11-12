@@ -3,13 +3,46 @@ Review
 Know the Concepts
 
 • Describe the lifecycle of a file descriptor.
-
+    Opening File:
+        The life of a file descriptor starts with a call to open a file with the
+        Linux system call number 5 stored in the %eax register.
+        Other than the system call number, the %ebx, %ecx, and %edx registers will be needed as well.
+        The address of the first character of the file we wish to open are stored in %ebx.
+        Read/write intentions are stored in %ecx.
+        Permissions are stored in %edx.
+        After this intial setup is finished, the Linux interrupt (int $0x80) is used to transfer control over to the system.
+        The result will be stored in the %eax register and is referred to as the "File Descriptor".
+    Reading/Writing File:
+        The open file descriptor can then be used to read or write to the file but first we need to make
+        more system calls.
+        If we're reading the system call number will be 3,
+        for writing it will be 4.
+        This number will be stored in %eax.
+        The file descriptor will be stored in %ebx.
+        Then we'll need a buffer to read or write to,
+        this buffer will be stored in %ecx and the
+        size of the buffer will need to be stored in %edx.
+        Once the operations on the file have concluded,
+        the file descriptor will need to be closed.
+    Closing File:
+        System call number for close is 6 and will need to be stored in the %eax register,
+        along with the file descriptor which will be stored in %ebx.
 
 • What are the standard file descriptors and what are they used for?
-
+    1. STDIN:
+        This file (everything in Linux is a file), is read only and represents the keyboard (typically).
+        It is used to pass input from a user or program to another program.
+    2. STDOUT:
+        This file is write only and typically used to output information to a user or program.
+    3. STDERR:
+        STDERR is similar to STDOUT in the sense that it is write only and used to output information to
+        a user or program but it is used for errors. This becomes useful when we want to seperate outputs from error 
+        warnings.
 
 • What is a buffer?
-
+    A buffer is a section of memory that is being used to store data temporarily,
+    as new data is read into the buffer it is manipulated or written somewhere else before
+    the block is overwritten with new data.
 
 • What is the difference between the .data section and the .bss section?
 
