@@ -22,28 +22,13 @@
 .section .text
 
 
-.equ ST_SIZE_RESERVE, 8
-.equ ST_FD_IN, -4
-.equ ST_FD_OUT, -8
-
-
 .globl _start
 _start:
     movl %esp, %ebp
-    subl $ST_SIZE_RESERVE, %esp
-
-
-store_fd_in:
-    movl %eax, ST_FD_IN(%ebp)
-
-
-store_fd_out:
-    movl %eax, ST_FD_OUT(%ebp)
-
 
 read_loop_begin:
     movl $SYS_READ, %eax
-    movl ST_FD_IN(%ebp), %ebx
+    movl $STDIN, %ebx
     movl $BUFFER_DATA, %ecx
     movl $BUFFER_SIZE, %edx
     int $LINUX_SYSCALL
@@ -60,21 +45,13 @@ continue_read_loop:
 
     movl %eax, %edx
     movl $SYS_WRITE, %eax
-    movl ST_FD_OUT(%ebp), %ebx
+    movl $STDOUT, %ebx
     movl $BUFFER_DATA, %ecx
     int $LINUX_SYSCALL
 
     jmp read_loop_begin
 
 end_loop:
-    movl $SYS_CLOSE, %eax
-    movl ST_FD_OUT(%ebp), %ebx
-    int $LINUX_SYSCALL
-
-    movl $SYS_CLOSE, %eax
-    movl ST_FD_IN(%ebp), %ebx
-    int $LINUX_SYSCALL
-
     movl $SYS_EXIT, %eax
     movl $0, %ebx
     int $LINUX_SYSCALL
