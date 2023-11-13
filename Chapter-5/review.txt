@@ -74,7 +74,7 @@ STDOUT instead of using the files on the command-line.
 
 • Rewrite the program so that it uses storage in the .bss section rather than the
 stack to store the file descriptors.
-    Refer to to-upper-new-buffer.s for solution.
+    Refer to to-upper-bss-section.s for solution.
 
 • Write a program that will create a file called heynow.txt and write the words
 "Hey diddle diddle!" into it.
