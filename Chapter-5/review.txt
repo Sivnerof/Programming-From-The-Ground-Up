@@ -67,7 +67,7 @@ Use the Concepts
 
 • Modify the toupper program so that it reads from STDIN and writes to
 STDOUT instead of using the files on the command-line.
-
+    Refer to to-upper-command-line.s for solution.
 
 • Change the size of the buffer.
     Refer to to-upper-new-buffer.s for solution.
