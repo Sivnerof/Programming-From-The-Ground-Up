@@ -1,3 +1,9 @@
+# The only difference between this program and the to-upper program is that
+# this one has replaced all mentions of ST_FD_IN and ST_FD_OUT with
+# FILE_DESCRIPTOR_IN and FILE_DESCRIPTOR_OUT.
+# Both FILE_DESCRIPTOR_IN and FILE_DESCRIPTOR_OUT are declared in
+# the .bss section.
+
 .section .data
 
 .equ SYS_OPEN, 5

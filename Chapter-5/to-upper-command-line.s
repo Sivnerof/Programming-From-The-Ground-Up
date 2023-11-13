@@ -1,3 +1,12 @@
+# Differences between this program and to-upper:
+#       Some declarations have been removed from the .data section.
+#       Usage of the stack by the main part of the program has been removed.
+#       The open and close system call sections have been removed since they
+#       are not needed when using STDIO and STDOUT.
+#       Instead of using values from the stack to pass in as file descriptors this
+#       program uses STDIO and STDOUT.
+#       No changes have been made to the convert_to_upper function.
+
 .section .data
 
 .equ SYS_WRITE, 4

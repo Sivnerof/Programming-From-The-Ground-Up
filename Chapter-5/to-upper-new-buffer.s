@@ -1,3 +1,7 @@
+# The only difference between this program and the to-upper program is that
+# this program has changed the line ".equ BUFFER_SIZE, 500" to
+# .equ BUFFER_SIZE, 250
+
 .section .data
 
 .equ SYS_OPEN, 5
