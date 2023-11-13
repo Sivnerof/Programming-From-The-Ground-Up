@@ -70,7 +70,7 @@ STDOUT instead of using the files on the command-line.
 
 
 • Change the size of the buffer.
-
+    Refer to to-upper-new-buffer.s for solution.
 
 • Rewrite the program so that it uses storage in the .bss section rather than the
 stack to store the file descriptors.
