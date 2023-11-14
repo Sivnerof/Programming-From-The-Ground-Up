@@ -85,10 +85,38 @@ stack to store the file descriptors.
 Going Further
 
 • What difference does the size of the buffer make?
-
+    The size of a buffer impacts memory.
+    The larger the buffer the more memory will be needed.
+    Naturally, larger buffers can hog a computers resources.
+    On the other hand, if a buffer is too small it can slow down performance.
+    Every read of/write to a file will need a system call and the smaller the buffer the
+    more system calls will need to be made.
+    Buffer sizes can affect memory optimization/utilization, performance and
+    efficient handling of data.
 
 • What error results can be returned by each of these system calls?
-
+    From the Linux man pages (example: https://www.man7.org/linux/man-pages/man2/read.2.html) here are common
+    error results.
+        1. EINVAL (22): Invalid argument.
+        2. ENOSYS (38): Function not implemented.
+        3. ENOMEM (12): Out of memory.
+        4. EFAULT (14): Bad address.
+        5. EACCES (13): Permission denied.
+        6. EEXIST (17): File exists.
+        7. ENOENT (2): No such file or directory.
+        8. EBADF (9): Bad file descriptor.
+        9. EIO (5): Input/output error.
+        10. ENFILE (23): Too many open files in system.
+        11. EMFILE (24): Too many open files.
+        12. EPIPE (32): Broken pipe.
+        13. EINTR (4): Interrupted system call.
+        14. EFAULT (14): Bad address.
+        15. ENOTDIR (20): Not a directory.
+        16. EISDIR (21): Is a directory.
+        17. EAGAIN (11): Resource temporarily unavailable.
+        18. ENODEV (19): No such device.
+        19. ENOTTY (25): Inappropriate ioctl for device.
+        20. EFBIG (27): File too large.
 
 • Make the program able to either operate on command-line arguments or use
 STDIN or STDOUT based on the number of command-line arguments specified
