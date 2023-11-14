@@ -21,6 +21,9 @@ filename:
 string_to_print:
     .asciz "Hey diddle diddle!"
 
+# Size of "buffer" named string_to_print.
+.equ STRING_SIZE, 18
+
 
 .section .bss
 
@@ -39,27 +42,37 @@ _start:
 open_file:
     # Open System Call (5) moved into %eax
     movl $SYS_OPEN, %eax
-
     # Pointer to null terminated string moved into %ebx
     movl $filename, %ebx
-
     # File intentions stored in %ecx 
     # (create write only, truncate if already exists)
     movl $O_CREAT_WRONLY_TRUNC, %ecx
-
     # Permissions stored in %edx
     # Read, write permissions for Owner, Group, and Others.
     movl $0666, %edx
-
     # Transfer control to Linux
     int $LINUX_SYSCALL
-
     # Move the returned value from system call (file descriptor) onto the stack.
     movl %eax, ST_FILE_DESCRIPTOR(%ebp)
 
-close_file:
-    movl $SYS_CLOSE, %eax
+write_file:
+    # Open System Call (4) moved into %eax
+    movl $SYS_WRITE, %eax
+    # Move the file descriptor on the stack into the %ebx register
     movl ST_FILE_DESCRIPTOR(%ebp), %ebx
+    # Move the address of the first character in the string_to_print string into the %ecx register
+    movl $string_to_print, %ecx
+    # move the size of the string (18 bytes) into the %edx register.
+    movl $STRING_SIZE, %edx
+    # Transfer control to Linux
+    int $LINUX_SYSCALL
+
+close_file:
+    # Close System Call (6) moved into %eax
+    movl $SYS_CLOSE, %eax
+    # Move the file descriptor on the stack into the %ebx register
+    movl ST_FILE_DESCRIPTOR(%ebp), %ebx
+    # Transfer control to Linux
     int $LINUX_SYSCALL
 
 restore_stack_pointer:
