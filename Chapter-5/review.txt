@@ -63,6 +63,7 @@ Know the Concepts
         %edx - Size Of Buffer
 
 
+
 Use the Concepts
 
 • Modify the toupper program so that it reads from STDIN and writes to
@@ -78,7 +79,7 @@ stack to store the file descriptors.
 
 • Write a program that will create a file called heynow.txt and write the words
 "Hey diddle diddle!" into it.
-
+    Refer to hey-diddle-diddle.s for solution.
 
 
 
