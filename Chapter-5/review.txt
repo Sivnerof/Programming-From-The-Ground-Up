@@ -126,4 +126,4 @@ by ARGC.
 
 • Modify the program so that it checks the results of each system call, and prints
 out an error message to STDOUT when it occurs.
-
+    Refer to to-upper-error-logging.s for solution.
