@@ -128,6 +128,29 @@ read_loop_begin:
     movl $BUFFER_SIZE, %edx
     int $LINUX_SYSCALL
 
+error_check_read_call:
+    # If %eax is a negative number, there was an error.
+    cmpl $0, %eax
+    jle read_error
+
+    # Otherwise continue with program
+    jmp read_loop_begin_continue
+
+read_error:
+    # Open System Call (4) moved into %eax
+    movl $SYS_WRITE, %eax
+    # Move the STDERR file descriptor into the %ebx register
+    movl $STDERR, %ebx
+    # Move the address of the first character in the error_message string into the %ecx register
+    movl $error_message, %ecx
+    # move the size of the string (19 bytes) into the %edx register.
+    movl $error_message_size, %edx
+    # Transfer control to Linux
+    int $LINUX_SYSCALL
+    # If there was an error reading the file, close both files and end the program.
+    jmp end_loop
+
+read_loop_begin_continue:
     cmpl $END_OF_FILE, %eax
     jle end_loop
 
