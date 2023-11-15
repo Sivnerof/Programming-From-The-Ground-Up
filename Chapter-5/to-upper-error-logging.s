@@ -59,6 +59,29 @@ open_fd_in:
     movl $0666, %edx
     int $LINUX_SYSCALL
 
+error_check_first_open_file:
+    # If %eax is a negative number, there was an error.
+    cmpl $0, %eax
+    jle open_first_file_error
+
+    # Otherwise continue with the program.
+    jge store_fd_in
+
+# %eax was negative, write to STDERR
+open_first_file_error:
+    # Open System Call (4) moved into %eax
+    movl $SYS_WRITE, %eax
+    # Move the STDERR file descriptor into the %ebx register
+    movl $STDERR, %ebx
+    # Move the address of the first character in the error_message string into the %ecx register
+    movl $error_message, %ecx
+    # move the size of the string (19 bytes) into the %edx register.
+    movl $error_message_size, %edx
+    # Transfer control to Linux
+    int $LINUX_SYSCALL
+    # If there was an error opening the first file, end the program.
+    jmp end_program
+
 store_fd_in:
     movl %eax, ST_FD_IN(%ebp)
 
@@ -107,6 +130,7 @@ end_loop:
     movl ST_FD_IN(%ebp), %ebx
     int $LINUX_SYSCALL
 
+end_program:
     movl $SYS_EXIT, %eax
     movl $0, %ebx
     int $LINUX_SYSCALL
