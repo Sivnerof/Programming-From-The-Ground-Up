@@ -44,8 +44,12 @@ _start:
     subl $ST_SIZE_RESERVE, %esp
 
     # Check if no arguments were passed in (no files).
-    cmpl $1, ST_ARGC(%ebp) #######
-    je set_ebx_to_stdin ##############
+    cmpl $1, ST_ARGC(%ebp)
+
+    # If no files passed as arguments, skip the following:
+    # open_files. open_fd_in, store_fd_in, open_fd_out
+    # store_fd_out
+    je read_loop_begin
 
 open_files:
 open_fd_in:
@@ -68,14 +72,28 @@ open_fd_out:
 store_fd_out:
     movl %eax, ST_FD_OUT(%ebp)
 
-set_ebx_to_fd_in_on_stack: #######
-    movl ST_FD_IN(%ebp), %ebx #######
-    jmp read_loop_begin #######
-
-set_ebx_to_stdin: #######
-    movl $STDIN, %ebx ######
 
 read_loop_begin:
+    # Check if NO files passed in as arguments
+    cmpl $1, ST_ARGC(%ebp)
+
+    # If so, set the file descriptor to STDIN
+    je set_ebx_to_stdin
+
+    # If not so, set the file descriptor to file descriptor on stack
+    jne set_ebx_to_fd_in_on_stack
+
+# No files were passed in as arguments, if this reached.
+set_ebx_to_stdin:
+    movl $STDIN, %ebx
+    jmp continue_loop_with_correct_fd_in
+
+# Files were passed in as arguments, set file descriptor to input file on stack.
+set_ebx_to_fd_in_on_stack:
+    movl ST_FD_IN(%ebp), %ebx
+
+# The %ebx register is now loaded with the correct file descriptor.
+continue_loop_with_correct_fd_in:
     movl $SYS_READ, %eax
     movl $BUFFER_DATA, %ecx
     movl $BUFFER_SIZE, %edx
@@ -94,25 +112,38 @@ continue_read_loop:
     movl %eax, %edx
     movl $SYS_WRITE, %eax
 
-    cmpl $1, ST_ARGC(%ebp) #########
-    je set_ebx_to_stdout ########
+    # Check if NO files were passed in as arguments
+    cmpl $1, ST_ARGC(%ebp)
+
+    # If so, set the file descriptor to STDOUT
+    je set_ebx_to_stdout
+
+    # If not so, set the file descriptor to the file descriptor on the stack
     jne set_ebx_to_fd_out_on_stack
+
+# No files were passed in as arguments, if this reached.
 set_ebx_to_stdout:
     movl $STDOUT, %ebx
-    jmp continue_loop_with_correct_ebx
+    jmp continue_loop_with_correct_fd_out
+
+# Files were passed in as arguments, set file descriptor to output file on stack.
 set_ebx_to_fd_out_on_stack:
     movl ST_FD_OUT(%ebp), %ebx
-continue_loop_with_correct_ebx:
+
+continue_loop_with_correct_fd_out:
     movl $BUFFER_DATA, %ecx
     int $LINUX_SYSCALL
 
     jmp read_loop_begin
 
 end_loop:
-    # Check if no arguments were passed in (no files).
-    cmpl $1, ST_ARGC(%ebp) #######
-    je end_program ##############
+    # Check if NO files were passed in as arguments.
+    cmpl $1, ST_ARGC(%ebp)
 
+    # If so end program, no need for closing files we never opened.
+    je end_program
+
+    # Otherwise, files WERE passed in as arguments and need to be closed now.
     movl $SYS_CLOSE, %eax
     movl ST_FD_OUT(%ebp), %ebx
     int $LINUX_SYSCALL
@@ -121,7 +152,7 @@ end_loop:
     movl ST_FD_IN(%ebp), %ebx
     int $LINUX_SYSCALL
 
-end_program: ######
+end_program:
     movl $SYS_EXIT, %eax
     movl $0, %ebx
     int $LINUX_SYSCALL
