@@ -18,6 +18,8 @@ This repository serves as a storage for notes/programs I write while reading the
 
 * [Chapter 4 Notes/Programs](./Chapter-4/ "My answers to the review questions at the end of chapter 4")
 
+* [Chapter 5 Notes/Programs](./Chapter-5/ "My answers to the review questions at the end of chapter 5")
+
 ---
 
 [Back To Top](#programming-from-the-ground-up "Jump To Top")
